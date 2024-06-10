@@ -1,10 +1,11 @@
 from pymongo import MongoClient
+import os
 
-DB_NAME = 'sobeedb'
-URI='mongodb://localhost:27017/'
+MONGODB_URI=os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/')
+DB_NAME = os.environ.get('DB_NAME', 'sobeedb')
 
 def connect_to_mongo():
-    client = MongoClient(URI)
+    client = MongoClient(MONGODB_URI)
     db = client[DB_NAME]
     return db
 
