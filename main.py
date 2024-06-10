@@ -35,4 +35,4 @@ async def fetch_recommend_products(input: str):
         return {"recommendations": []}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=os.getenv("PORT", default=8001))
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", default=8001)))
