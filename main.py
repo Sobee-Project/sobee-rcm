@@ -26,9 +26,9 @@ class Input(BaseModel):
     input: str
 
 @app.post("/recommend")
-async def fetch_recommend_products(input: str):
+async def fetch_recommend_products(input: str, size:int = 12):
     try:
-        recommendations = recommend_products_script(input)
+        recommendations = recommend_products_script(input, size)
         return {"recommendations": recommendations}
     except Exception as e:
         print(e)
