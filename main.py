@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from pydantic import BaseModel
 from apriori_script import recommend_products_script
+import os
 
 app = FastAPI()
 
@@ -34,4 +35,4 @@ async def fetch_recommend_products(input: str):
         return {"recommendations": []}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=os.getenv("PORT", default=8001))
